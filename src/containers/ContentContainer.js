@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Connect from '../Components/content'
-import { getUserList } from '../actions/contentAction'
+import { getUserList, deleteUser } from '../actions/contentAction'
 
 //Map Redux state to component props
 const mapStateToProps = state => {
@@ -26,6 +26,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    getUserList
+    getUserList,
+    deleteUser
   }
 )(Connect)

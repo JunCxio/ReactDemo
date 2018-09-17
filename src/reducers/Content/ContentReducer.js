@@ -1,7 +1,8 @@
 import * as types from '../../constants/ActionTypes'
 
 const initialState = {
-  lists: []
+  lists: [], //列表
+  total: '' //总数
 }
 
 //Reducer
