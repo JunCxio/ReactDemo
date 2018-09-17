@@ -31,12 +31,15 @@ class Content extends Component {
     const { getUserList } = this.props
     this.setState(
       {
-        page
+        page,
+        dataObj: {
+          ...this.state.dataObj,
+          page
+        }
       },
       () => {
         getUserList({
-          ...this.state.dataObj,
-          page
+          ...this.state.dataObj
         })
       }
     )
@@ -50,10 +53,16 @@ class Content extends Component {
     const { getUserList } = this.props
     this.setState(
       {
-        pageSize
+        pageSize,
+        page: 1,
+        dataObj: {
+          ...this.state.dataObj,
+          pageSize,
+          page: 1
+        }
       },
       () => {
-        getUserList({ ...this.state.dataObj, pageSize: pageSize })
+        getUserList({ ...this.state.dataObj })
       }
     )
   }
@@ -74,7 +83,9 @@ class Content extends Component {
     const columns = [
       {
         title: '序号',
-        // dataIndex:
+        render: (text, record, index) => (
+          <span>{(this.state.page - 1) * this.state.pageSize + index + 1}</span>
+        ),
         key: 'number',
         align: 'center'
       },
