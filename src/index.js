@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
+import Page from './Page'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import store from './configureStore'
@@ -17,11 +17,11 @@ const render = Component => {
   )
 }
 
-render(App)
+render(Page)
 
 //模块热替换的API
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    render(App)
+  module.hot.accept('./Page', () => {
+    render(Page)
   })
 }
