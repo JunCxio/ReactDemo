@@ -18,9 +18,9 @@ class Content extends Component {
   componentDidMount() {
     console.log(this.props)
     const { getUserList } = this.props
-    getUserList({
-      ...this.state.dataObj
-    })
+    // getUserList({
+    //   ...this.state.dataObj
+    // })
   }
 
   /**

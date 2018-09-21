@@ -17,7 +17,7 @@ export const login = (dataObj, props) => {
     }).then(res => {
       if (res.respCode == 10000000) {
         const { history } = props
-        history.push('/app')
+        history.push('/comment')
         message.success(res.repMessage)
       } else {
         message.error(res.repMessage)

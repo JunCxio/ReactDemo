@@ -6,7 +6,7 @@ import Login from '../containers/LoginContainer'
 //注册页面
 import Register from '../Components/register'
 
-import App from '../App.js'
+import App from '../containers/ContentContainer'
 
 export default class CRouter extends Component {
   render() {
@@ -14,7 +14,7 @@ export default class CRouter extends Component {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/app" component={App} />
+        <Route exact path="/comment" component={App} />
       </Switch>
     )
   }

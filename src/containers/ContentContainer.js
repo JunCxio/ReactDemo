@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Connect from '../Components/content'
+import Content from '../Components/Content/content'
 import { getUserList, deleteUser } from '../actions/contentAction'
 
 //Map Redux state to component props
@@ -29,4 +29,4 @@ export default connect(
     getUserList,
     deleteUser
   }
-)(Connect)
+)(Content)
