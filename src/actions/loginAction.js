@@ -16,6 +16,7 @@ export const login = (dataObj, props) => {
       }
     }).then(res => {
       if (res.respCode == 10000000) {
+        sessionStorage.setItem('user', JSON.stringify(res.data[0]))
         const { history } = props
         history.push('/comment')
         message.success(res.repMessage)

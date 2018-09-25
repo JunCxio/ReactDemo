@@ -97,7 +97,11 @@ class Register extends Component {
   }
 
   validateToNextPassword = (rule, value, callback) => {
+    var uPattern = /^\w{6,18}$/
     const form = this.props.form
+    if (!uPattern.test(value)) {
+      callback('密码由6-18位的数字、字母、下划线组成')
+    }
     if (value && this.state.confirmDirty) {
       form.validateFields(['confirm'], { force: true })
     }
@@ -111,6 +115,19 @@ class Register extends Component {
     } else {
       callback()
     }
+  }
+
+  /**
+   * 检验账号
+   */
+  confirmAccount = (rule, value, callback) => {
+    var uPattern = /^[a-zA-Z0-9_-]{4,16}$/
+    if (value.length > 16 || value.length < 4) {
+      callback('账号不超过16位且不低于4位!')
+    } else if (!uPattern.test(value)) {
+      callback('账号只允许字母,数字,下划线及减号!')
+    }
+    callback()
   }
 
   render() {
@@ -158,7 +175,10 @@ class Register extends Component {
             </FormItem>
             <FormItem {...formItemLayout} label="账号:">
               {getFieldDecorator('accountNum', {
-                rules: [{ required: true, message: '请输入账号!' }]
+                rules: [
+                  { required: true, message: '请输入账号!' },
+                  { validator: this.confirmAccount }
+                ]
               })(<Input placeholder="账号" />)}
             </FormItem>
 

@@ -5,50 +5,58 @@ import { message } from 'antd'
 
 /**
  * 请求用户列表
- * @param page 页码
- * @param pageSize 每页显示条数
+ * @param id 用户id
+ * @param comment 评论
  */
-export const getUserList = dataObj => {
+export const comment = dataObj => {
   return dispatch => {
-    request({
+    return request({
       method: 'post',
-      url: api.getUserList,
+      url: api.comment,
       data: {
         ...dataObj
       }
     }).then(res => {
       if (res.respCode == 10000000) {
-        dispatch({
-          type: types.GET_USER_LIST,
-          payload: { lists: res.data, total: res.total }
-        })
+        message.success(res.repMessage)
+        return true
       } else {
-        dispatch({
-          type: types.GET_USER_LIST,
-          payload: { lists: [], total: 0 }
-        })
-        message.error('获取用户列表失败!')
+        message.error(res.repMessage)
+        return false
       }
     })
   }
 }
 
 /**
- * 删除用户
- * @param id 用户ID
+ * 获取评论
+ * @param page 页码
  */
-export const deleteUser = id => {
+export const getCommentList = page => {
   return dispatch => {
-    return request({
+    request({
       method: 'post',
-      url: api.deleteUser,
+      url: api.getCommentList,
       data: {
-        id
+        page
       }
     }).then(res => {
       if (res.respCode == 10000000) {
-        message.success(res.repMessage)
+        dispatch({
+          type: types.GET_COMMENT,
+          payload: {
+            lists: res.data,
+            total: res.total
+          }
+        })
       } else {
+        dispatch({
+          type: types.GET_COMMENT,
+          payload: {
+            lists: [],
+            total: 0
+          }
+        })
         message.error(res.repMessage)
       }
     })

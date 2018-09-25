@@ -8,7 +8,7 @@ const initialState = {
 //Reducer
 const Counter = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_USER_LIST:
+    case types.GET_COMMENT:
       return {
         ...state,
         ...action.payload

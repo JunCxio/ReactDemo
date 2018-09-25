@@ -42,7 +42,7 @@ const fetch = options => {
   const cloneData = lodash.cloneDeep(data)
 
   //配置axios请求默认值
-  axios.defaults.baseURL = 'http://192.168.9.155:3022'
+  axios.defaults.baseURL = 'http://192.168.9.31:3022'
 
   switch (method.toLowerCase()) {
     case 'get':
